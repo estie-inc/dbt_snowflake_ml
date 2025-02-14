@@ -1,0 +1,13 @@
+examples:
+  target: local
+  outputs:
+    local:
+      type: snowflake
+      account: 
+      user: 
+      database: 
+      password: 
+      role: 
+      schema: 
+      threads: 1
+      warehouse: 

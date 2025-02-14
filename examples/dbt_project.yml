@@ -1,0 +1,37 @@
+name: 'dbt_snowflake_ml_examples'
+version: '1.0'
+
+profile: 'examples'
+
+config-version: 2
+
+seed-paths: ["seeds"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_modules"
+  - "dbt_packages"
+
+dispatch:
+  - macro_namespace: 'dbt_snowflake_ml'
+    search_order: ['dbt_snowflake_ml_examples', 'dbt_snowflake_ml']
+
+seeds:
+  +quote_columns: false
+  titanic3:
+    +column_types:
+      pclass: integer
+      survived: integer
+      name: text
+      sex: text
+      age: float
+      sibsp: integer
+      parch: integer
+      ticket: text
+      fare: float
+      cabin: text
+      embarked: text
+      boat: text
+      body: integer
+      home_dest: text
