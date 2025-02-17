@@ -3,7 +3,7 @@ dbt package integrates Snowflake ML
 
 
 ## Requirements
-- https://github.com/dbt-labs/dbt-snowflake adapter
+- [dbt-snowflake](https://github.com/dbt-labs/dbt-adapters/tree/main/dbt-snowflake) adapter
 
 
 ## Installation
