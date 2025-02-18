@@ -50,7 +50,7 @@
         {{ dbt_snowflake_ml.py_write_model(compiled_code=compiled_code, target_relation=relation) }}
     {%- else -%}
         {% do exceptions.raise_compiler_error(
-            "snowflake__create_table_as macro didn't get supported language, it got %s"
+            "snowflake__create_model_as macro didn't get supported language, it got %s"
             % language
         ) %}
     {%- endif -%}
