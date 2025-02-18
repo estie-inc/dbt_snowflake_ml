@@ -77,7 +77,7 @@ def main(session):
     assert "conda_dependencies" not in model_dict, "conda_dependencies cannot be overridden"
     mv = reg.log_model(
         **model_dict,
-        model_name = dbt.this.identifier,
+        model_name = "{{ resolve_model_name(target_relation) }}",
         conda_dependencies = ["{{ config.get('packages') | join('", "') }}"],
     )
     if set_default:
