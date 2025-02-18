@@ -59,6 +59,8 @@
 
 -- fmt: off
 {% macro py_write_model(compiled_code, target_relation) %}
+{% set packages = config.get("packages", []) %}
+{% set packages = packages + (["snowflake-ml-python"] if packages | count == 0 else []) %}
 import importlib.util
 if importlib.util.find_spec("snowflake.ml") is None:
     raise ImportError("snowflake.ml is not found. Add snowflake-ml-python to package dependencies.")
@@ -78,7 +80,7 @@ def main(session):
     mv = reg.log_model(
         **model_dict,
         model_name = "{{ resolve_model_name(target_relation) }}",
-        conda_dependencies = ["{{ config.get('packages') | join('", "') }}"],
+        conda_dependencies = ['{{ packages | join("', '") }}'],
     )
     if set_default:
         reg.get_model(dbt.this.identifier).default = mv
